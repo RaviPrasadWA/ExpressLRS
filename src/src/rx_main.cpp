@@ -52,6 +52,18 @@
 #include "esp_task_wdt.h"
 #endif
 
+#ifdef DISABLE_WIFI
+#include <WiFi.h>
+WiFi.mode(WIFI_OFF);
+WiFi.forceSleepBegin();
+#endif
+
+#ifdef DISABLE_BT
+#include "esp_bt.h"
+btStop();
+#endif
+
+
 //
 // Code encapsulated by the ARDUINO_CORE_INVERT_FIX #ifdef temporarily fixes EpressLRS issue #2609 which is caused
 // by the Arduino core (see https://github.com/espressif/arduino-esp32/issues/9896) and fixed
